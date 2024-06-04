@@ -1,0 +1,972 @@
+ /*
+
+Namn: Kevin Olsson
+skol id: keol1201
+kurs: DT100G - Webbprogrammering
+Proggram: Civilingenjör Datateknik.
+
+Denna otorligt långa fil hanterar stylingen av alla element för alla sidor.
+I början så kodade jag mycket rad för rad vad allt gör, men sedan så insåg jag hur rendundant det vore, så jag har lagt ett litet
+kommentarsfält över de fläesta kodsektionerna för att visa vad de gör och för vad.
+
+(Obs, denna fil kan säkerliken städas till stor del).
+
+*/
+ 
+ /* CSS reset - resets every html element of the page - so we can style it how we want after */
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box; /* läs på mer om detta */
+     list-style: none;
+ }
+ 
+
+ /* Sets background image*/
+ body{
+
+   /* width: 200%;*/
+    height: 100vh;  /* takes 100% of the height of the viewport (visible area) regardless of the screen size */
+    background-position: center;
+    background-size: cover; /* covers the complete space */
+    background-repeat: no-repeat; /* don't repeat image */
+    background: url(1.png);
+
+    font-family: Calisto MT; /* ska göra om font family för body? */
+    font-style: italic;   
+}
+
+
+
+
+/*eddit för top navigation bar*/
+.topNav{
+    height: 100px;
+    width: 100%;
+    background: rgba(0,0,0, 0.35);/* sets color black for nav bar and then reduce the opacity to 0.25% as in the story board*/
+    text-align: center;
+    
+}
+
+/* move the links to the right */
+.topNav .list{
+    float: right;
+    /*margin-right: 20px;*/ 
+   margin: 15px 300px 0px 0px; /* centers the navigation links vertically at the header */
+ 
+}
+
+/*makes the links horisontally placed instead of vertical */
+nav ul li{
+    display:inline-block; /* vad gör detta?  - tydligen horrisontell placering ? */
+    line-height: 70px; /* adjusts vertical line spacing */ 
+    margin: 0 5px;
+    list-style: none; /* take away bulletpoints after list items */
+    position: relative; /* to be able to activate position absolute later for the ddropdown */
+}
+
+
+/* styling for the anchor elements (links) */ 
+.topNav .list li a{
+   /* display: block;*/
+    font-size: 35px;
+    /*padding: 7px 20%; /* first val = top + bottom, second value = left + right */ 
+    border-radius: 3px; /* rounds border corners */
+    margin: 30px; /*adjusts the space between each link at the header/navigation menu */
+    
+}
+
+/* styling for dropdown unordered list*/ 
+.topNav .list li ul{
+    display: none;
+    position: absolute; /* makes the list drop down */ 
+    background-color: black;
+    z-index: 9999; /* puts the drop down list to the front of the stack */
+    
+    border-radius: 0px 0px 4px 4px; /* rounding the corners of the list */
+ }
+
+ .topNav .list .arrow {
+     padding: 0px 0px;
+ }
+
+ /* hover effect for the drop down - makes sure it only becomes visible when hover */
+ .topNav .list .arrow:hover ul{
+    display: block;
+ }
+
+
+ /* stiling of all list items for dropdown */
+ .topNav .list li ul li{
+     width: 250px; /* makes sure the dropdown elements fit nicely */
+     border-radius: 4px;
+ }
+
+ /*styling of anchor elements inside the drop down list */
+ .topNav .list li ul li a{
+    padding: 8px 14px;
+ }
+
+ /* hover effect for drop down items */
+ .topNav .list li ul li a:hover{
+     color: yellow;
+    background-color: black ;
+ }
+
+/* dropdown creates an arrow for about-menu */
+.topNav .list .arrow > a:after{
+    color: white;
+    content: ' ▾';
+}
+
+
+
+
+
+
+/* unvisited link = white */
+.topNav a:link{
+    color: white;
+    text-decoration: none; 
+}
+
+/* makes sure that all links are always displayed as white as default regardless if they have been visited or not */
+.topNav a:visited{
+    text-decoration: none;
+    color: white;
+}
+
+/* styling a link when mouse is hovering over */
+.topNav a:hover {
+    text-decoration: underline;
+    color: yellow;
+    background: black;
+    transition: 0.5s;
+  }
+
+
+
+  /* styling the links when a link is clicked/focused */
+  .topNav a:focus{
+    text-decoration: underline;
+    color: yellow;
+  }
+
+  /* presentation text  for home */ 
+  #myName{
+      color: white;
+      font-family: Bell MT;
+      font-style:normal;
+      text-align: center;
+      font-size: 100px !important;
+      line-height: 210px;
+      opacity: 0.8;
+  }
+
+    /* presentation text  for home */ 
+  #Occupation{
+    color: white;
+    text-align: center;
+    opacity: 0.7;
+    font-size: 50px !important;
+    line-height: 15px ;
+  }
+
+    /* presentation text  for home */ 
+  #chopin{
+    color: white;
+    text-align: center;
+    opacity: 0.7;
+    font-size: 25px !important;
+    position:relative;
+    top: 350px;
+  }
+
+/*Styling for the biography page title */
+  #bioTitle{
+    font-family: Calisto MT; 
+    font-style: italic; 
+    color: white;
+    font-style:normal;
+    text-align: center;
+    font-size: 70px !important;
+    line-height: 210px;
+    opacity: 0.8;
+  }
+
+  /*styling for biogrpahy page text */
+  #bioText {
+    font-family: Calisto MT; 
+    font-style: italic; 
+    color: white;
+    font-style:normal;
+    text-align: center;
+    font-size: 30px !important;
+    line-height: 210px;
+    opacity: 0.8;
+
+  }
+
+   /*styling for review pagea title */
+   #reviewTitle{
+    font-family: Calisto MT; 
+    font-style: italic; 
+    color: white;
+    font-style:normal;
+    text-align: center;
+    font-size: 70px !important;
+    line-height: 210px;
+    opacity: 0.8;
+  }
+
+  /* styling for review page text */
+    .reviews{
+    font-family: Calisto MT; 
+    font-style: italic; 
+    color: white;
+    font-style:normal;
+    text-align: center;
+    font-size: 20px !important;
+    opacity: 0.8;
+  }
+
+ /*Styling for the contact page title */
+ #contactTitle{
+  font-family: Calisto MT; 
+  font-style: italic; 
+  color: white;
+  font-style:normal;
+  text-align: center;
+  font-size: 70px !important;
+  line-height: 210px;
+  opacity: 0.8;
+}
+
+/* styling for contact page description */
+#info{
+  font-family: Calisto MT; 
+    font-style: italic; 
+    color: white;
+    font-style:normal;
+    text-align: center;
+    font-size: 30px !important;
+    opacity: 0.75;
+}
+
+/* styling for the contact form */
+.contactInfo{
+  text-align: center;
+ /* line-height: 50px;*/
+}
+
+#messageSent{
+  font-family: Calisto MT; 
+  font-style: italic; 
+  color: white;
+  font-style:normal;
+  text-align: center;
+  font-size: 70px !important;
+  line-height: 210px;
+  opacity: 0.8;
+}
+
+#messageSentInfo{
+  font-family: Calisto MT; 
+  font-style: italic; 
+  color: white;
+  font-style:normal;
+  text-align: center;
+  font-size: 30px !important;
+  opacity: 0.75;
+}
+
+
+
+
+/*changes the color of the boxes in the contact form */ 
+.contactInfo input, .contactInfo textarea{
+  background-color: black;
+  border: 1px solid #666666;
+  font-family: Calisto MT; 
+  font-style: italic; 
+  font-size: 25px;
+}
+
+/*styling of all input fields in the contact  form */
+.contactInfo input {
+  margin: 2px;
+  margin-right: 230px;
+  line-height: 20px;
+}
+
+/*changes all placeholders to the color of white insidde the boxes in the contact form */
+.contactInfo ::placeholder{
+  color: white;
+  opacity: 0.9;
+  /*opacity: 1;*/
+}
+
+/* makes the input text white for the contact form when box is focused */
+.contactInfo input:focus, .contactInfo textarea:focus{ 
+  color: #FFFFFF; 
+}
+
+/* makes the input text stay white even if the contact form is deselected/unfocused */
+.contactInfo input, .contactInfo textarea{
+  color: #FFFFFF;
+}
+
+/* styling of the paragraph over the form */
+#inputInfo{
+  color: white;
+  font-size: 25px;
+  margin-left: 610px;
+  margin-top: 50px;
+  line-height: 10px;
+}
+
+/*styling of the message paragraph over the message box*/
+.contactInfo #messageP{
+  font-size: 25px;
+  margin-right: 390px;
+}
+
+
+
+/*styling of the submit button in the contact form */
+.contactInfo #submitButton{
+  background-color: black;
+  color: white;
+  font-family: Calisto MT; 
+  font-style: italic; 
+  font-size: 20px;
+}
+
+/*effect on the submit buttom in the contact form */
+.contactInfo #submitButton:focus, .contactInfo #submitButton:hover{
+  color: yellow;
+}
+
+/* styling for journal title */
+#journal{
+font-family: Calisto MT; 
+  font-style: italic; 
+  color: white;
+  text-align: center;
+  font-size: 70px !important;
+  line-height: 130px;
+  opacity: 0.8;
+}
+
+/*styling for the entire menu section */ 
+.verticalMenu{
+  position: relative;
+  text-align: center;
+  background-color: rgb(0, 0, 0, 0.7);
+  width: 700px;
+  height: 500px;
+  margin-left: 410px;
+  bottom: 20px;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 2vw;
+  
+}
+
+/*styling of links (anchor items) inside vertical menu */
+.verticalMenu .menuItems li a{
+  color: white;
+  font-size: 30px;
+  font-family: Calisto MT; 
+  font-style: italic; 
+  margin: 0px;
+}
+
+
+
+.verticalMenu .menuItems{
+  /* display: inline-block; */ 
+  line-height: 50px;
+}
+
+/*scrollbar styling */
+.verticalMenu::-webkit-scrollbar{
+  width: 0.4em; 
+	background-color: black;
+  
+  
+}
+
+/*the entire scrollbar itself */
+.verticalMenu::-webkit-scrollbar-track{
+  border: 1px solid black;
+	background-color: solid white;
+  border-radius: 100vw; /* makes the shape nicer and rounder */
+  
+}
+
+/* scrollbar - the part that shows where you actually are */ 
+.verticalMenu::-webkit-scrollbar-thumb{
+  background-color: rgb(201, 201, 201);	
+  border-radius: 100vw;
+}
+
+/* hovering over the scrollbar thumb makes a visual marking */
+.verticalMenu::-webkit-scrollbar-thumb:hover{
+  background-color: rgb(255, 255, 255);	
+}
+
+/* styling of logout button */ 
+#logout{
+  position:absolute;
+  display: block;
+  color: white;
+  background-color: black;
+  font-size: 30px;
+  margin-left: 1400px;
+  margin-top: 30px;
+}
+
+/*styling of logintext at login page */
+.login{
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 50px;
+}
+
+/*styling of input field at login page */
+.loginSection .loginForm input{
+  position: relative;
+  background-color: black;
+  font-size: 20px;
+  margin-top: 100px;
+  margin-left: 150px;
+}
+
+/*styling of the entire login section box */
+.loginSection{
+  background-color: black;
+  width: 500px;
+  height: 500px;
+  margin-left: 600px;
+}
+
+/* styling of login button */
+.loginSection .loginForm #loginButton{
+  font-size: 30px;
+  margin-top: 50px;
+  margin-left: 215px;
+  background-color: black;
+  color: white;
+}
+
+/* makes the input text white for the contact form when box is focused */
+.loginSection .loginForm input:focus{ 
+  color: #FFFFFF; 
+}
+/* makes the input text stay white even if the contact form is deselected/unfocused */
+.contactInfo input{
+  color: #FFFFFF;
+}
+
+/*styling of the complete section of the add post button in journal */
+.anchor{
+  margin-top: 20px;
+  
+}
+
+/* styling of the parapraph that surrounds the addPost-anchor tag in journal */
+.anchor p{
+  position: absolute;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0, 0.7);
+  width: 200px;
+  margin-left: 660px;
+  height: 65px;
+  line-height: 40px;
+  bottom: 15px;
+}
+
+/*styling of the addPost- anchor in journal */
+.anchor p #addPost{
+  display: inline-block;
+  color: white;
+  font-size: 35px;
+  font-family: Calisto MT; 
+  font-style: italic; 
+  margin-top: 10px;
+  margin-left:5px;
+ 
+  
+}
+
+/*disasbles resize for text area inside add post.*/
+.newPost #postMessage{
+  resize: none;
+}
+
+/*styling of the entire addpost sction */
+.newPost{
+  position: relative;
+  width: 736px;
+  left: 410px;
+  margin-top:20px;
+  background-color: rgb(0, 0, 0, 1);
+  color: white;
+  height: 542px;
+}
+
+
+
+/*styling of all input fields in addPost */
+.newPost input, .newPost button, .newPost textarea, #back{
+  background-color: black;
+  color: white;
+  font-size: 40px;
+  font-family: Calisto MT; 
+  font-style: italic; 
+  border: 0;
+}
+
+/*makes the input section in addPost 100% width */
+.newPost input{
+  width: 100%;
+}
+
+
+
+
+#back{
+  text-align: center;
+  position: absolute;
+  display: block;
+  width: 736px;
+  left: 410px;
+  top: 660px;
+}
+
+
+.newPost #submitPost{
+  position: relative;
+  width: 736px;
+  text-align: center;
+  top: 50px;
+}
+
+.newPost #submitPost:hover, #back:hover{
+  color: yellow;
+  cursor: pointer;
+
+}
+
+/* styling for post added page */
+#postAdded{
+  color: white;
+  text-align: center;
+  font-family: Calisto MT;
+  font-style: italic;
+  font-size: 80px;
+  margin-top: 200px;
+
+}
+
+/*styling the back button */
+#back2{
+  display: inline-block;
+  color: white;
+  font-size: 50px;
+  font-family: Calisto MT;
+  font-style: italic;
+  margin-left: 700px;
+  margin-top: 350px;
+}
+
+/*adding rows to the journal menu */
+#postrow{
+  color: white ;
+  opacity: 0.3;
+  width: 650px;
+}
+
+/*styling of the "back to all post" button at pagea readPost */
+#pBack3 #back3{
+  position: absolute;
+  display: inline-block;
+  margin-left: 400px;
+  margin-top: 680px;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.9;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  font-family: Calisto MT; 
+  font-style: italic; 
+  border: 0;
+  width: 736px;
+  height: 60px;
+
+}
+
+#backHr{
+  position: relative;
+  width: 736px;
+  top: 580px;
+  left: 400px;
+  z-index: 1;
+}
+
+/*stylinig of the "back to post button - hover effect */
+#pBack3 #back3:hover, #deleteAnchor:hover{
+  color: yellow;
+  background-color: black;
+}
+
+
+
+/*styling of the delete anchor in readPost */
+#deleteAnchor{
+  position: relative;
+  display: block;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: 40px;
+  font-family: Calisto MT; 
+  font-style: italic; 
+  border: 0;
+  width: 736px;
+  height: 60px;
+  margin-left: 400px;
+  opacity: 0.9;
+  text-align: center;
+  margin-top: 610px;
+  line-height: 60px;
+  
+}
+
+/*styling of horizontal line between the delete and the "back" button*/
+#hr2{
+  position: absolute;
+  width: 736px;
+  color: white;
+  margin-left: 400px;
+  margin-top: 608px;
+  z-index: 1;
+}
+
+
+
+/* styling of the view post section */ 
+.viewPost{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  margin-left: 400px;
+  margin-top:10px;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  font-family: Calisto MT; 
+  font-style: italic; 
+  border: 0;
+  width: 736px;
+  height: 570px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid black;
+  word-wrap: break-word; /* prevents overflow outside div */
+}
+
+
+/* styling of the date section in readPost */
+.viewPost #pstDate{
+  font-size: 40px;
+  opacity: 0.8;
+}
+
+/* styling of post title in readPost */
+.viewPost #pstName{
+  font-size: 50px;
+  margin-bottom: 0px;
+}
+
+/*styling of the message in readPost*/
+.viewPost #postMsg{
+  font-size: 30px !important;
+}
+
+
+/*scrollbar styling */
+.viewPost::-webkit-scrollbar{
+  width: 0.4em; 
+	background-color: black;
+  
+  
+}
+
+/*the entire scrollbar itself */
+.viewPost::-webkit-scrollbar-track{
+  border: 1px solid black;
+	background-color: solid white;
+  border-radius: 100vw; /* makes the shape nicer and rounder */
+  
+}
+
+/* scrollbar - the part that shows where you actually are */ 
+.viewPost::-webkit-scrollbar-thumb{
+  background-color: rgb(201, 201, 201);	
+  border-radius: 100vw;
+}
+
+/* hovering over the scrollbar thumb makes a visual marking */
+.viewPost::-webkit-scrollbar-thumb:hover{
+  background-color: rgb(255, 255, 255);	
+}
+
+
+
+
+
+/* styling of composition page title and description */
+#compTitle, #compDescr, #addComp{
+  color: white;
+  text-align: center;
+  font-family: Bell MT;
+  font-style:italic;
+}
+#compTitle{
+  font-size: 60px;
+  margin-top: 10px;
+}
+#compDescr{
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+/*styling for the redirect button (anchor) at the composition page */
+p #addCompA{
+  position: relative;
+  display: inline-block;
+  font-size: 35px;
+  color: white;
+  background-color: black;
+  opacity: 0.8;
+  margin-top: 5px;
+  margin-left: 550px;
+  height: 60px;
+  width: 450px;
+  text-align: center;
+  padding-top: 6px;
+  border-radius: 5px;
+  
+}
+
+/*styling of add compositiotn buttoon */
+p #addCompA:hover{
+  color: yellow;
+  opacity: 1;
+  
+}
+
+/* styling of upload composition button (i think)  */ 
+.uploadComp{
+  color: white;
+}
+
+
+
+
+/*styling of the entire music section at the composition pagea */ 
+.musicSection{
+  font-family: Bell MT;
+  font-style:italic;
+  position: relative;
+  text-align: center;
+  background-color: rgb(0, 0, 0, 0.75);
+  color: rgb(255, 255, 255);
+  width: 900px;
+  height: 500px;
+  margin-left: 300px;
+  margin-top: 10px;
+  padding: 10px;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.8vw;
+  overflow-x: hidden;
+}
+
+/*scrollbar styling */
+.musicSection::-webkit-scrollbar{
+  width: 0.4em; 
+  height: 10em;
+	background-color: black;
+  
+  
+}
+
+/*the entire scrollbar itself */
+.musicSection::-webkit-scrollbar-track{
+  border: 1px solid black;
+	background-color: solid white;
+  border-radius: 100vw; /* makes the shape nicer and rounder */
+  
+}
+
+/* scrollbar - the part that shows where you actually are */ 
+.musicSection::-webkit-scrollbar-thumb{
+  background-color: rgb(201, 201, 201);	
+  border-radius: 100vw;
+}
+
+/* hovering over the scrollbar thumb makes a visual marking */
+.musicSection::-webkit-scrollbar-thumb:hover{
+  background-color: rgb(255, 255, 255);	
+}
+
+
+/* styling of music title string at the audio play menu */
+.musicSection .musicInfo{
+  margin-right: 500px;
+}
+
+/* positioning and styling of music title */
+.musicSection .musicInfo #musicTitle{
+  position: relative;
+  font-size: 20px;
+  left: 45px;
+  top: 15px;
+}
+
+.musicSection .musicInfo #by{
+  position: relative;
+  right: 28px;
+  top: 14px;
+}
+
+.musicSection .musicInfo #pTitle{
+  position: relative; 
+  right: 20px;
+  top: 37px;
+}
+
+.musicSection .musicInfo #composerName{
+  position: relative;
+  left: 35px;
+  bottom: 1px;
+
+}
+
+
+/* styling of horizon line under audio menu in compositoins */
+.musicSection .musicInfo hr{
+  position: relative;
+  opacity: 0.5;
+  overflow-x: hidden;
+  left: 260px;
+  width: 910px;
+}
+
+/* positioning & styling of play button - audio menu */
+.musicSection #playButton{
+  position: relative;
+  right: 1030px;
+  line-height: 30px;
+  width: 30px;
+  margin-top: 40px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/*positioning & sytyling of next & prev button - audio menu*/
+.musicSection #prevButton, .musicSection #nextButton{
+  position: relative;
+  right: 400px;
+  bottom: 30px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* styling of previous button in audio menu */
+.musicSection #prevButton{
+  position: absolute;
+  right:160px;
+  top: 47px;
+  height: 20px;
+}
+
+.musicSection #nextButton{
+  bottom: 37px;
+}
+
+/*styling of list items in compositions */
+.musicSection .musicList li p{
+  position: relative;
+  display: list-item;
+  list-style-type: decimal;
+  list-style-position: inside;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  right: 50px;
+  top: 40px;
+}
+
+/* styling of the horizontal line at the composition audio section */ 
+#compHr{
+  position: relative;
+  width: 800px;
+  left: 310px;
+}
+
+/* styling and positioning of pdf image in compostiion section */
+.musicSection .musicList li #pdfAnchor #pdfImg{
+  position: relative;
+  padding: 0px;
+  bottom: 0px;
+  left: 630px;
+}
+
+/* styling of the music counter line */
+.trackerBar{
+  position: relative;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 6px;
+  width: 72%;
+  bottom: 460px;
+  left: 380px;
+}
+
+/* styling for the counter inner line color at audio menu */
+.musicSection .musicInfo .trackerBar .musicTracker{
+  background-color: rgb(110, 110, 110);
+  border-radius: 5px;
+  height: 100%;
+  width: 0%; /* the width is set to 0 by default for each song that is at the play section */
+  transition: width 0.1s linear; /* the width of this bar will increase linear by every 0.1s when an audio is playing*/
+}
+
+/*styling of the audio duration text counter*/
+.musicSection #audioDuration{
+  position: relative;
+  color: white;
+  font-size: 20px;
+  bottom: 490px;
+  left: 542px;
+}
+
+/*styling of audio fulltime text */
+.musicSection #audioFulltime{
+  position: relative;
+  font-size: 20px;
+  bottom: 513px;
+  color: white;
+  left: 585px;
+}

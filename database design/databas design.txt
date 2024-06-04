@@ -1,0 +1,40 @@
+databas hemsida::
+
+
+tabeller::
+
+
+compositions::
+
+tanken är att det ska vara en databas som håller i de mp3-filer som laddas upp. en tabell för 
+endast audio och en tabell för pdf-dokumenten (score)
+
+audio(Audio_ID, audio_Name, audio_format, score_ID),
+
+	audio_ID = varchar
+	audio_name = varchar (10)
+	audio_format = varchar(10)
+	score_ID = varchar(10)
+
+score(score_ID, score_name, score_Format),
+
+	score kör också på varchar 10 för de mesta.
+
+
+
+
+för varje ljudfil så finns det en score och för varje score så finns det en ljudfil.
+
+
+sedan en databas för bloggen/inläggen jag kommer ha. 3 tabeller totalt.
+
+Journal:: 
+
+journal(ID, name, message, time, date)
+
+	allt i journal ska va varchar(10) förutom message som är TEXT.
+
+
+
+detta blir då egentligen som 2 st databser, en för ljudfilerna som ska ha en relatopn till varandra och sedan
+en för journal som är 100% frånskilld och till för bloggen.
